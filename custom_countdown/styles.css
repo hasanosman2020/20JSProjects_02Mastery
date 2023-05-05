@@ -122,6 +122,27 @@ li span {
   position: relative;
   top: 60px;
 }
+.complete_title {
+  animation: complete 4s infinite;
+}
+@keyframes complete {
+  0% {
+color: rgba(247, 10, 10, 0.986);
+  };
+  25% {
+color:rgba(247, 136, 10, 0.986);
+  };
+  50% {
+    color:rgba(247, 243, 10, 0.986);
+    transform: scale(1.5);
+  };
+  75% {
+    color:rgba(10, 247, 10, 0.986);
+  };
+  100% {
+color:rgba(10, 34, 247, 0.986);
+  };
+}
 
 
 /** Media Query large smartphone (vertical) **/
