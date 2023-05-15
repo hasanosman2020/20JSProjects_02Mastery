@@ -9,14 +9,16 @@ const timeElements = document.querySelectorAll('span')
 
 let countdownTitle = ''
 let countdownDate = ''
-let countdownValue = Date
+let countdownValue = new Date()
 let countdownActive
+let savedCountdown
 
 const completeEl = document.getElementById('complete')
 const completeElInfo = document.getElementById('complete_info')
 const completeBtn = document.getElementById('complete_button')
 
 const second = 1000
+
 const minute = second * 60
 const hour = minute * 60
 const day = hour * 24
@@ -69,8 +71,15 @@ function updateCountdown (e) {
   // console.log(e);
   countdownTitle = e.srcElement[0].value
   countdownDate = e.srcElement[1].value
-  console.log(countdownTitle, countdownDate)
+  //console.log(countdownTitle, countdownDate)
+  savedCountdown = {
+    title: countdownTitle,
+    date: countdownDate
+  }
+  console.log('savedCountdown:', savedCountdown)
+  localStorage.setItem('countdown', JSON.stringify(savedCountdown))
 
+  //localStorage.setItem('countdown', JSON.stringify(savedCountdown))
   //Check for valid date
   if (countdownDate === '') {
     alert('Please select a date for the countdown.')
@@ -94,8 +103,24 @@ function reset () {
   //Reset values
   countdownTitle = ''
   countdownDate = ''
+  localStorage.removeItem('countdown')
+}
+
+function restorePreviousCountdown () {
+  //Get countdown from local storage, if available
+  if (localStorage.getItem('countdown')) {
+    inputContainer.hidden = true
+    savedCountdown = JSON.parse(localStorage.getItem('countdown'))
+    countdownTitle = savedCountdown.title
+    countdownDate = savedCountdown.date
+    countdownValue = new Date(countdownDate).getTime()
+    uppdateDOM()
+  }
 }
 //Event Listeners
 countdownForm.addEventListener('submit', updateCountdown)
 countdownBtn.addEventListener('click', reset)
 completeBtn.addEventListener('click', reset)
+
+//On load, check localStorage
+restorePreviousCountdown()
