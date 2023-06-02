@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks App</title>
+    <script src="https://kit.fontawesome.com/304357e058.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bookmarks.css">
+</head>
+<body>
+    <!-- Modal -->
+    <h1 id="show_modal">Add Bookmark</h1>
+    <!-- Bookmarks -->
+    <div id="container">
+        <div class="item">
+            <i class="fa-solid fa-trash" id="delete_bookmark"></i>
+            <div class="item_name">
+                <img src="https://s2.googleusercontent.com/s2/favicons?domain=https://www.google.com" alt="bookmark" title="Google"><a href="https://www.google.com/" target="_blank">Google</a>
+            </div>
+        </div>
+        <div class="item">
+            <i class="fa-solid fa-trash" id="delete_bookmark"></i>
+            <div class="item_name">
+                <img src="https://s2.googleusercontent.com/s2/favicons?domain=https://dev.to" alt="bookmark" title="DEV"><a href="https://dev.to/" target="_blank">DEV</a>
+            </div>
+        </div>
+        <div class="item">
+            <i class="fa-solid fa-trash" id="delete_bookmark"></i>
+            <div class="item_name">
+                <img src="https://s2.googleusercontent.com/s2/favicons?domain=https://www.udemy.com/" alt="bookmark" title="Udemy"><a href="https://www.udemy.com" target="_blank">Udemy</a>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal_container" id="modal">
+        <div class="modal">
+            <i class="fa-solid fa-xmark close_icon" id="close_modal"></i>
+            <div class="modal_header">
+                <h3>Add Bookmark</h3>
+            </div>
+            <div class="modal_content">
+                <form id="bookmark_form">
+                    <!-- Website Name -->
+                    <div class="form_group">
+                        <label for="website_name" class="form_label">Website Name</label>
+                        <input type="text" class="form_input" id="website_name"
+                    </div>
+                    <!-- Website Name -->
+                    <div class="form_group">
+                        <label for="website_url" class="form_label">Website URL</label>
+                        <input type="text" class="form_input" id="website_url">
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="bookmarks.js"></script>
+</body>
+</html>
