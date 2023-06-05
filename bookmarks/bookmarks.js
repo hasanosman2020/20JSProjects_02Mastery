@@ -5,6 +5,9 @@ const websiteNameEl = document.getElementById('website_name')
 const websiteUrlEl = document.getElementById('website_url')
 const closeModal = document.getElementById('close_modal')
 const bookmarksContainer = document.getElementById('bookmarks_container')
+const bookmarksForm = document.getElementById('bookmark_form')
+
+const bookmarks = []
 
 /* Functions */
 function modalShow () {
@@ -16,13 +19,44 @@ function modalShow () {
   modal.classList.remove('show_modal')
 }*/
 
-/* Event Listeners */
+/* Modal Event Listeners */
 showModal.addEventListener('click', modalShow)
 closeModal.addEventListener('click', () => modal.classList.remove('show_modal'))
 
-window.addEventListener(
-  'click',
-  e => (e.target === modal ? modal.classList.remove('show_modal') : false)
-
-  /*modalContainer ? bookmarksContainer.classList.remove('show_modal') : false*/
+window.addEventListener('click', e =>
+  e.target === modal ? modal.classList.remove('show_modal') : false
 )
+
+// Handle data from form
+
+function storeBookmarks (e) {
+  e.preventDefault()
+  console.log(e)
+
+  const websiteName = websiteNameEl.value
+  let websiteUrl = websiteUrlEl.value
+  console.log(websiteName, websiteUrl)
+  if (!websiteUrl.includes('http') || !websiteUrl.includes('https')) {
+    websiteUrl = `https://${websiteUrl}`
+  }
+  console.log(websiteName, websiteUrl)
+
+  //Validate website url
+  const pattern =
+    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g
+  const regexUrl = `${websiteUrl}`
+  console.log(pattern.test(regexUrl))
+
+  //Local Storage
+  const bookmark = {
+    name: websiteName,
+    url: websiteUrl
+  }
+  bookmarks.push(bookmark)
+  console.log(bookmarks)
+  bookmarksForm.reset()
+  websiteNameEl.focus()
+}
+
+//Event Listeners
+bookmarksForm.addEventListener('submit', storeBookmarks)
