@@ -26,6 +26,23 @@ closeModal.addEventListener('click', () => modal.classList.remove('show_modal'))
 window.addEventListener('click', e =>
   e.target === modal ? modal.classList.remove('show_modal') : false
 )
+//Fetch bookmarks
+function fetchBookmarks () {
+  //Get bookmarks from local storage if available
+  if (localStorage.getItem('bookmark')) {
+    bookmarks = JSON.parse(localStorage.getItem('bookmark'))
+  } else {
+    //Create bookmarks array in local storage
+    bookmarks = [
+      {
+        name: 'Hasan Osman',
+        url: 'https://hasanosman.design'
+      }
+    ]
+    localStorage.setItem('bookmark', JSON.stringify(bookmarks))
+  }
+  console.log(bookmarks)
+}
 
 // Handle data from form
 
@@ -54,6 +71,8 @@ function storeBookmarks (e) {
   }
   bookmarks.push(bookmark)
   console.log(bookmarks)
+  localStorage.setItem('bookmark', JSON.stringify(bookmarks))
+  console.log(JSON.stringify(bookmarks))
   bookmarksForm.reset()
   websiteNameEl.focus()
 }
