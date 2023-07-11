@@ -7,7 +7,7 @@ const closeModal = document.getElementById('close_modal')
 const bookmarksContainer = document.getElementById('bookmarks_container')
 const bookmarksForm = document.getElementById('bookmark_form')
 
-let bookmarks = []
+let bookmarks = {}
 
 /* Functions */
 function modalShow () {
@@ -50,8 +50,8 @@ function buildBookmarks () {
   //Remove all bookmark elements before appending
   bookmarksContainer.textContent = ''
   //Build items
-  bookmarks.forEach(bookmark => {
-    const { name, url } = bookmark
+  Object.keys(bookmarks).forEach(id => {
+    const { name, url } = bookmarks[id]
     //console.log(name, url)
     //Item
     const item = document.createElement('div')
@@ -131,8 +131,9 @@ function fetchBookmarks () {
   if (localStorage.getItem('bookmarks')) {
     bookmarks = JSON.parse(localStorage.getItem('bookmarks'))
   } else {
-    //Create bookmarks array in local storage
-    bookmarks = [
+    //Create bookmarks object in local storage
+    const id = 'https://github.com/hasanosman2020'
+    bookmarks[id] = [
       {
         name: 'Hasan Osman',
         url: 'https://github.com/hasanosman2020'
@@ -145,18 +146,12 @@ function fetchBookmarks () {
   buildBookmarks()
 }
 //Delete bookmarks
-function deleteBookmark (url) {
+function deleteBookmark (id) {
   //loop through the bookmarks array
-  bookmarks.forEach((bookmark, i) => {
-    if (bookmark.url === url) {
-      bookmarks.splice(i, 1)
-    } else {
-      console.log('No bookmarks to show')
-    }
-    if (bookmark === null) {
-      bookmarks.splice(i, 1)
-    }
-  })
+  if (bookmarks[id]) {
+    delete bookmarks[id]
+  }
+
   //Update bookmarks array in local storage, re-populate DOM
   localStorage.setItem('bookmarks', JSON.stringify(bookmarks))
   fetchBookmarks()
@@ -193,7 +188,7 @@ function storeBookmark (e) {
     name: websiteName,
     url: websiteUrl
   }
-  bookmarks.push(bookmark)
+  bookmarks[websiteUrl] = bookmark
   //console.log(bookmarks)
 
   //Set bookmarks in localStorage, fetch, rest input fields
