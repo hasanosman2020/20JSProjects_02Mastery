@@ -182,12 +182,12 @@ function storeBookmark (e) {
   }
 
   /*
-  //Validate website url
-  const pattern =
-    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g
-  const regexUrl = `${websiteUrl}`
-  console.log(pattern.test(regexUrl))
-*/
+    //Validate website url
+    const pattern =
+      /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g
+    const regexUrl = `${websiteUrl}`
+    console.log(pattern.test(regexUrl))
+  */
   //Set bookmark object, add to array
   const bookmark = {
     name: websiteName,
@@ -203,7 +203,6 @@ function storeBookmark (e) {
   bookmarksForm.reset()
   websiteNameEl.focus()
 }
-
 //Validate form
 function validate (websiteName, websiteUrl) {
   const expression =
