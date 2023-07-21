@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player</title>
+    <script src="https://kit.fontawesome.com/304357e058.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +17,65 @@
     <!-- https://mixkit.co/free-stock-video/a-woman-dancing-in-front-of-a-green-screen-23572/ -->
     <!-- Ballet dancer on pointe -->
     <!-- https://mixkit.co/free-stock-video/ballet-dancer-stepping-on-pointe-43470/-->
+    <div class="player">
+        <video src="https://assets.mixkit.co/videos/preview/mixkit-boy-dancing-funnily-on-a-green-chroma-background-28289-large.mp4" playsinline></video>
+        <!-- Show Controls -->
+        <div class="show_controls">
+            <!-- Controls Container -->
+            <div class="controls_container">
+                <!-- Progress Bar -->
+                <div class="progress_range" title="Seek">
+                    <div class="progress_bar"></div>
+                </div>
+                <div class="controls_group">
+                    <!-- Left controls -->
+                    <div class="controls_left">
+                    <!-- Play / Pause -->
+                    <div class="play_controls">
+                        <i class="fa-solid fa-play" title="Play" id="play_btn"></i>
+                    </div>
+                    <!-- Volume -->
+                    <div class="volume">
+                        <div class="volume_icon">
+                            <i class="fa-solid fa-volume-up" title="Mute" id="volume_icon"></i>
+                        </div>
+                        <div class="volume_range" title="Change Volume">
+                            <div class="volume_bar"></div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Controls -->
+                    <div class="controls_right">
+                        <!-- Speed -->
+                        <div class="speed" title="Playback Rate">
+                            <select name="playbackRate" class="player_speed">
+                                <option value="0.5">0.5x</option>
+                                 <option value="0.75">0.75x</option>  
+                                  <option value="1" selected>1x</option> 
+                                   <option value="1.5">1.5x</option> 
+                                    <option value="2">2x</option> 
+
+                            </select>
+                        </div>
+                        <!-- Time -->
+                        <div class="time">
+                            <span class="time_elapsed">00:00 / </span>
+                            <span class="time_duration">00:16</span>
+                        </div>
+                        <!-- Fullscreen -->
+                        <div class="fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
     
-    <script src="app.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
