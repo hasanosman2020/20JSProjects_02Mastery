@@ -90,7 +90,7 @@ cursor: default;
     left: 15px;
     top: 15px;
     cursor: pointer;
-    background: rgba(249, 247, 247, 0.9);
+    background: var(--primary-colour);
     /*border: 2px solid red;*/
     transition: height 0.1s ease-in-out;
 }
@@ -98,7 +98,7 @@ cursor: default;
     height: 20px;
 }
 .progress_bar {
-    background: var(--primary-colour);
+    background: rgba(249, 247, 247, 0.9);
     width: 50%;
     height: 100%;
     border-radius: 10px;
