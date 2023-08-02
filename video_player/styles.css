@@ -139,7 +139,7 @@ cursor: default;
 .volume_bar {
     background: var(--font-colour);
     width: 100%;
-    height: 100%;
+    
     border-radius: 10px;
     transition: width 0.2s ease-in;
 }
