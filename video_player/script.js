@@ -15,6 +15,9 @@ function showPlayIcon () {
   if (video.ended) {
     playBtn.classList.replace('fa-pause', 'fa-play')
     playBtn.setAttribute('title', 'Play')
+  } else {
+    playBtn.classList.replace('fa-pause', 'fa-play')
+    playBtn.setAttribute('title', 'Play')
   }
 }
 
@@ -63,6 +66,9 @@ function setProgress (e) {
 }
 
 /***** Volume Controls *****/
+
+let lastVolume = 1
+
 /* Click to change volume */
 function changeVolume (e) {
   let volume = e.offsetX / volumeRange.offsetWidth
@@ -87,6 +93,30 @@ function changeVolume (e) {
   } else if (volume === 0) {
     volumeIcon.classList.add('fa-solid', 'fa-volume-xmark')
   }
+  lastVolume = volume
+}
+// Mute / unmute
+function toggleMute () {
+  if (video.volume) {
+    lastVolume = video.volume
+    video.volume = 0
+    volumeBar.style.width = 0
+    volumeIcon.classList.add('fa-volume-xmark')
+    volumeIcon.setAttribute('title', 'Unmute')
+  } else {
+    video.volume = lastVolume
+    volumeBar.style.width = `${lastVolume * 100}%`
+    volumeIcon.classList.remove('fa-volume-xmark')
+    volumeIcon.setAttribute('title', 'Mute')
+
+    if (volume > 0.7) {
+      volumeIcon.classList.add('fa-solid', 'fa-volume-high')
+    } else if (volume < 0.7 && volume > 0) {
+      volumeIcon.classList.add('fa-solid', 'fa-volume-low')
+    } else if (volume === 0) {
+      volumeIcon.classList.add('fa-solid', 'fa-volume-xmark')
+    }
+  }
 }
 
 /***** Change Playback Speed *****/
@@ -109,3 +139,6 @@ progressRange.addEventListener('click', setProgress)
 
 /* Click to change volume */
 volumeRange.addEventListener('click', changeVolume)
+
+/* Click to toggle mute */
+volumeIcon.addEventListener('click', toggleMute)
