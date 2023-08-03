@@ -8,6 +8,7 @@ const volumeBar = document.querySelector('.volume_bar')
 const currentTime = document.querySelector('.time_elapsed')
 const duration = document.querySelector('.time_duration')
 const fullScreen = document.querySelector('.fullscreen')
+const playerSpeed = document.querySelector('.player_speed')
 
 /***** Play and Pause *****/
 
@@ -69,6 +70,16 @@ function setProgress (e) {
 
 let lastVolume = 1
 
+function volumeChange () {
+  if (volume > 0.7) {
+    volumeIcon.classList.add('fa-solid', 'fa-volume-high')
+  } else if (volume < 0.7 && volume > 0) {
+    volumeIcon.classList.add('fa-solid', 'fa-volume-low')
+  } else if (volume === 0) {
+    volumeIcon.classList.add('fa-solid', 'fa-volume-xmark')
+  }
+}
+
 /* Click to change volume */
 function changeVolume (e) {
   let volume = e.offsetX / volumeRange.offsetWidth
@@ -86,13 +97,14 @@ function changeVolume (e) {
   console.log(volume)
   // Change icon depending on volume
   volumeIcon.className = ''
-  if (volume > 0.7) {
+  /*if (volume > 0.7) {
     volumeIcon.classList.add('fa-solid', 'fa-volume-high')
   } else if (volume < 0.7 && volume > 0) {
     volumeIcon.classList.add('fa-solid', 'fa-volume-low')
   } else if (volume === 0) {
     volumeIcon.classList.add('fa-solid', 'fa-volume-xmark')
-  }
+  }*/
+  volumeChange()
   lastVolume = volume
 }
 // Mute / unmute
@@ -109,17 +121,23 @@ function toggleMute () {
     volumeIcon.classList.remove('fa-volume-xmark')
     volumeIcon.setAttribute('title', 'Mute')
 
-    if (volume > 0.7) {
+    /*if (volume > 0.7) {
       volumeIcon.classList.add('fa-solid', 'fa-volume-high')
     } else if (volume < 0.7 && volume > 0) {
       volumeIcon.classList.add('fa-solid', 'fa-volume-low')
     } else if (volume === 0) {
       volumeIcon.classList.add('fa-solid', 'fa-volume-xmark')
-    }
+    }*/
+    volumeChange()
   }
 }
 
 /***** Change Playback Speed *****/
+function changeSpeed () {
+  //console.log('video playback rate', video.playbackRate)
+  //console.log('selected value', playerSpeed.value)
+  video.playbackRate = playerSpeed.value
+}
 
 /***** Fullscreen *****/
 
@@ -142,3 +160,6 @@ volumeRange.addEventListener('click', changeVolume)
 
 /* Click to toggle mute */
 volumeIcon.addEventListener('click', toggleMute)
+
+/* Click to change playback speed */
+playerSpeed.addEventListener('change', changeSpeed)
