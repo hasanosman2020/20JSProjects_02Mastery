@@ -1,3 +1,4 @@
+const player = document.querySelector('.player')
 const video = document.querySelector('video')
 const progressRange = document.querySelector('.progress_range')
 const progressBar = document.querySelector('.progress_bar')
@@ -141,6 +142,43 @@ function changeSpeed () {
 
 /***** Fullscreen *****/
 
+/* View in fullscreen */
+function openFullscreen (elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen()
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen()
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen()
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen () {
+  if (document.exitFullscreen) {
+    document.exitFullscreen()
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
+    document.webkitExitFullscreen()
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
+    document.msExitFullscreen()
+  }
+}
+
+/* Toggle fullscreen */
+let fullscreen = false
+function toggleFullscreen () {
+  if (fullscreen) {
+    openFullscreen(player)
+  } else {
+    closeFullscreen()
+  }
+  fullscreen = !fullscreen
+}
+
 /***** Event Listeners *****/
 playBtn.addEventListener('click', togglePlay)
 video.addEventListener('click', togglePlay)
@@ -163,3 +201,6 @@ volumeIcon.addEventListener('click', toggleMute)
 
 /* Click to change playback speed */
 playerSpeed.addEventListener('change', changeSpeed)
+
+/* Click to open fullscreen */
+fullScreen.addEventListener('click', toggleFullscreen)
