@@ -1,7 +1,7 @@
-const playerScore = document.getElementById('playerScore');
-const computerScore = document.getElementById('computerScore');
-const playerChoice = document.getElementById('playerChoice');
-const computerChoice = document.getElementById('computerChoice');
+const playerScoreEl = document.getElementById('playerScore');
+const computerScoreEl = document.getElementById('computerScore');
+const playerChoiceEl = document.getElementById('playerChoice');
+const computerChoiceEl = document.getElementById('computerChoice');
 const resultText = document.getElementById('resultText');
 
 const playerRock = document.getElementById('playerRock');
@@ -25,23 +25,23 @@ function select(playerChoice){
     switch(playerChoice){
         case 'rock':
             playerRock.classList.add('selected');
-            playerChoice.textContent === ' --- Rock';
+            playerChoiceEl.textContent = ' --- Rock';
             break;
             case 'paper':
                 playerPaper.classList.add('selected');
-                playerChoice.textContent === ' --- Paper';
+                playerChoiceEl.textContent = ' --- Paper';
                 break;
                 case 'scissors':
                     playerScissors.classList.add('selected');
-                    playerChoice.textContent === ' --- Scissors';
+                    playerChoiceEl.textContent = ' --- Scissors';
                     break;
                     case 'lizard':
                         playerLizard.classList.add('selected');
-                        playerChoice.textContent === ' --- Lizard';
+                        playerChoiceEl.textContent = ' --- Lizard';
                         break;
                         case 'spock':
                             playerSpock.classList.add('selected');
-                            playerChoice.textContent === ' --- Spock';
+                            playerChoiceEl.textContent = ' --- Spock';
                             break;
                             default:
                                 break;
