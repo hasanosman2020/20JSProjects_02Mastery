@@ -17,10 +17,19 @@ const computerLizard = document.getElementById('computerLizard');
 const computerSpock = document.getElementById('computerSpock');
 
 const allGamesIcons = document.querySelectorAll('.fas');
+console.log(allGamesIcons)
+
+function resetSelected(){
+    allGamesIcons.forEach((icon) => {
+        icon.classList.remove('selected')
+    })
+}
 
 // Putting player selection values and styling icons
 function select(playerChoice){
-   console.log(playerChoice);
+   //console.log(playerChoice);
+   resetSelected();
+   
     // Add 'selected' styling and playerChoice value
     switch(playerChoice){
         case 'rock':
