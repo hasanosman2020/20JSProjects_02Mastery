@@ -30,8 +30,6 @@ const choices = {
     spock: { name: 'Spock', defeats: ['scissors', 'rock'] },
   };
 
-
-
 function computerRandomChoice(){
     const computerChoiceNumber = Math.random();
     if(computerChoiceNumber < 0.2){
@@ -45,7 +43,6 @@ function computerRandomChoice(){
         }else if (computerChoice <= 1){
             computerChoice = 'spock';
         }
-    
         //console.log(computerChoice)
 }
 function displayComputerChoice(){
@@ -80,8 +77,21 @@ function resetSelected(){
     allGamesIcons.forEach((icon) => {
         icon.classList.remove('selected')
     })
+    //resetAll();
+
 }
 
+// Reset score & playerChoice/computerChoice
+function resetAll(){
+    playerScoreNumber = 0;
+    computerScoreNumber = 0;
+    playerScoreEl.textContent = playerScoreNumber;
+    computerScoreEl.textContent = computerScoreNumber;
+    playerChoiceEl.textContent = '';
+    computerChoiceEl.textContent = ''; 
+    resultText.textContent = '';
+    resetSelected();
+}
 // Check result, increase scores, update resultText
 function updateScore(playerChoice){
     console.log(playerChoice, computerChoice);
@@ -100,8 +110,6 @@ function updateScore(playerChoice){
             computerScoreEl.textContent = computerScoreNumber;
             }
     }
-
-
 }
 
 // Call functions to process turn
@@ -110,9 +118,6 @@ function checkResult(playerChoice){
     computerRandomChoice();
     displayComputerChoice();
     updateScore(playerChoice);
-
-
-
 }
 
 // Putting player selection values and styling icons
@@ -120,8 +125,6 @@ function select(playerChoice){
    //console.log(playerChoice);
    //resetSelected();
    checkResult(playerChoice);
-
-
    
     // Add 'selected' styling and playerChoice value
     switch(playerChoice){
@@ -150,8 +153,9 @@ function select(playerChoice){
 
     }
 }
-select()
 
+//On startup, set initial values
+resetAll();
 
 
 
