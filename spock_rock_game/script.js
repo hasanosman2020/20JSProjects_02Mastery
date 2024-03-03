@@ -101,6 +101,7 @@ function resetAll(){
     resultText.textContent = '';
     resetSelected();
     
+    
 }
 window.resetAll = resetAll;
 
