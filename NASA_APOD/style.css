@@ -9,7 +9,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+   
 }
 
 body {
@@ -34,12 +34,12 @@ body {
 
 
 /* Navigation */
-.navigation-container {
+.nav_container {
   position: fixed;
   top: 0;
 }
 
-.navigation-items {
+.nav_items {
   display: flex;
   justify-content: center;
 }
@@ -66,9 +66,9 @@ body {
 
 
 /* Images Container */
-.images-container {
-
+.images_container {
   margin-top: 50px;
+  width: 800px;
 }
 
 .card {
@@ -85,11 +85,17 @@ body {
 
 
 
-.card-body {
+.card_info {
   padding: 20px;
 }
 
-.card-title {
+.card_img {
+  width:100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.card_title {
   margin: 10px auto;
   font-size: 24px;
 }
@@ -120,7 +126,12 @@ body {
   body {
     line-height: 1.4rem;
     font-size: 0.9rem;
+    text-align: justify;
 
+  }
+
+  .images_container {
+    width: 100%;
   }
 
 
@@ -128,5 +139,9 @@ body {
     font-size: 20px;
   }
 
+  .save_confirmed {
+    right: 25px;
   
+  
+}
 }
