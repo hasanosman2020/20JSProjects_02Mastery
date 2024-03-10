@@ -41,8 +41,7 @@ function createDOMNodes(page) {
             saveText.setAttribute('onclick', `removeFavourite('${result.url}')`);
 
         }
-        saveText.textContent = 'Add to Favourites';
-        saveText.setAttribute('onclick', `saveFavourite('${result.url}')`);
+        
 
         //Save Icon
         const saveIcon = document.createElement('i');
@@ -80,14 +79,15 @@ function createDOMNodes(page) {
 }
 
 function updateDom(page) {
-    createDOMNodes(page);
+    
 
     // Get Favourites from localStorage
     if (localStorage.getItem('nasaFavourites')) {
         favourites = JSON.parse(localStorage.getItem('nasaFavourites'))
         console.log('favourites from local storage', favourites)
     }
-    
+    imagesContainer.textContent = '';
+    createDOMNodes(page);
     }
     
 
@@ -137,6 +137,18 @@ function saveFavourite(itemUrl) {
         }
 
     })
+}
+
+//Remove Favourite from Favourites
+function removeFavourite(itemUrl) {
+    if (favourites[itemUrl]) {
+        delete favourites[itemUrl];
+        //Set Favourites in Local Storage
+        localStorage.setItem('nasaFavourites', JSON.stringify(favourites));
+        updateDom('favourites');
+
+
+    }
 }
 
 
