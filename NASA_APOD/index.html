@@ -23,16 +23,17 @@
       <!--Navigation-->
         <div class="nav_container">
             <span class="background">
+              <!--Results NAV-->
                 <span class="nav_items" id="resultsNav">
-                    <h3 class="clickable">Favourites</h3>
+                    <h3 class="clickable" onclick ="updateDom('favourites')">Favourites</h3>
                     <h3>&nbsp;&nbsp;&nbsp;&#8226;&nbsp;&nbsp;&nbsp;</h3>
-                    </h3>
-                    <h3 class="clickable">Load More</h3>
+                    
+                    <h3 class="clickable" onclick="getNasaPictures()">Load More</h3>
                 </span>
+                <!--Favourites NAV-->
                 <span class="nav_items hidden" id="favouritesNav">
-                    <h3 class="clickable">Load More NASA Images</h3>
+                    <h3 class="clickable" onclick="getNasaPictures()">Load More NASA Images</h3>
                 </span>
-            </span>
         </div>
     <!--Images Container-->
     <div class="images_container"></div>

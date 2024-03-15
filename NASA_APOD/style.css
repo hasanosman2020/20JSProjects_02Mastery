@@ -2,15 +2,7 @@ html {
   box-sizing: border-box;
 }
 
-.loader {
-    background: whitesmoke;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
+
 
 body {
   margin: 0;
@@ -31,12 +23,23 @@ body {
 }
 
 /* Loader */
-
+.loader {
+    background: whitesmoke;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -10;
+   
+}
 
 /* Navigation */
 .nav_container {
   position: fixed;
-  top: 0;
+  top: -20px;
+  border-top: 20px solid whitesmoke;
 }
 
 .nav_items {
@@ -112,7 +115,7 @@ body {
   position: fixed;
   bottom: 25px;
   right: 50px;
-  z-index: 50;
+  /*z-index: 50;*/
 }
 
 /* Hidden */
